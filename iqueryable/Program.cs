@@ -13,6 +13,13 @@
     static void Main(string[] args)
     {
         var musteriler = new List<TBLMUSTERI>();
+
+
+/************************************************************************************************************************************************************/
+        /*
+            @Add
+            Listeye verilen elemani ekler;
+        */
         musteriler.Add(new TBLMUSTERI { LNGKOD = 1, TXTAD = "Sabancı Holding" });
         musteriler.Add(new TBLMUSTERI { LNGKOD = 2, TXTAD = "Koç Holding" });
 
@@ -81,13 +88,13 @@
 /************************************************************************************************************************************************************/
         /*
             @AsEnumerable
-            ienumerable olarak dondurur
+            ienumerable olarak dondurur;
         */
-        var ieMusteriler = musteriler.AsEnumerable(); //
+        var ieMusteriler = musteriler.AsEnumerable();
 /************************************************************************************************************************************************************/
         /*
             @Average
-            Degerlerin ortalamasini alir
+            Degerlerin ortalamasini alir;
         */
         var average = musteriler.Average(x => x.LNGKOD);
         /*
@@ -180,6 +187,58 @@
                     TXTAD [string]:"Alarko Holding"
                 }
             )
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @Clear
+            Listeyi temizler;
+        */
+        musteriler.Clear();
+/************************************************************************************************************************************************************/
+        /*
+            @Concat
+            Iki listeyi birlestirir;
+        */
+        var sahol = new TBLMUSTERI { LNGKOD = 1, TXTAD = "Sabancı Holding" };
+        musteriler.Add(sahol);
+        var musterilerConcat = new List<TBLMUSTERI>{new TBLMUSTERI { LNGKOD = 2, TXTAD = "Koç Holding" }};
+        musteriler = musteriler.Concat(musterilerConcat).ToList();
+        /*
+            @return(
+                musteriler = 
+                [0]:{
+                    LNGKOD [int]:1
+                    TXTAD [string]:"Sabancı Holding
+                }
+                [1]:{ 
+                    LNGKOD [int]:2
+                    TXTAD [string]:"Koç Holding"
+                }
+            )
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @Contains
+            Listenin icerisinde verilen tek eleman var mı?;
+        */
+        bool musteriContains =  musteriler.Contains(sahol);
+         /*
+            Degiskenden cekilmeden arandıgında false donmekte cunku ramde farklı alanda;
+            @return(
+                bool => true
+            )
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @ConvertAll
+            Listeyi istenilen tipte donusturur;
+        */
+        var musterilerConvertAll = musteriler.ConvertAll(x=>x.TXTAD);
+        /*
+            musterilerConvertAll = [
+                [0] [string]:"Sabancı Holding"
+                [1] [string]:"Koç Holding"
+            ]
         */
     }
 }
