@@ -19,7 +19,7 @@
 /************************************************************************************************************************************************************/
         /*
             @Aggregate
-            Verilen değerleri toplar;
+            Verilen varsayılan deger ile tum degerleri donerek tek bir sonuc dondurur;
         */
         var musteriBirlestir = musteriler.Aggregate("", (sonDeger, eleman) => sonDeger + " " + eleman.TXTAD);
         /*
