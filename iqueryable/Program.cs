@@ -240,5 +240,71 @@
                 [1] [string]:"Koç Holding"
             ]
         */
+/************************************************************************************************************************************************************/
+        /*
+            @CopyTo
+            Listeyi arraye kopyalar;
+        */
+        TBLMUSTERI[] musteriCopyTo = new TBLMUSTERI[musteriler.Count];
+        musteriler.CopyTo(musteriCopyTo);
+        /*
+            musteriCopyTo[] = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+            
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @Count
+            Liste eleman sayısını verir;
+        */
+        int musteriCount = musteriler.Count;
+         /*
+            musteriCount = 2
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @DefaultIfEmpty
+            Liste eleman bulunmuyorsa varsayılan elemanı ekler;
+        */
+        var musterilerIfEmpty = musteriler.DefaultIfEmpty(new TBLMUSTERI { LNGKOD = 3, TXTAD = "Sabancı Holding" });
+/************************************************************************************************************************************************************/
+        /*
+            @Distinct
+            Liste elemanları benzersiz olarak döndürür;
+        */
+        musteriler.Add(new TBLMUSTERI {LNGKOD=3,TXTAD="Sabancı Holding"});
+        var musterilerDistinct = musteriler.Select(x=>x.TXTAD).Distinct();
+       
+       /*
+            musterilerDistinct = [
+                [0] [string]:"Sabancı Holding"
+                [1] [string]:"Koç Holding"
+            ]
+       */
+/************************************************************************************************************************************************************/
+        /*
+            @DistinctBy
+            Liste elemanları verilen anahtara göre benzersiz olarak döndürür;
+        */
+        var musterilerDistinctBy = musteriler.DistinctBy(x=>x.TXTAD);
+        /*
+            musterilerDistinctBy = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+        */
     }
+
 }
