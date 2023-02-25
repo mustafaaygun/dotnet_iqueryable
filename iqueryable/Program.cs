@@ -305,6 +305,54 @@
                 TXTAD [string]:"Koç Holding"
             }
         */
+        musteriler.Remove(musteriler.Last());
+/************************************************************************************************************************************************************/
+        /*
+            @ElementAt
+            Liste içerisinde verilen indexdeki elemanı döndürür;
+        */
+        var musterilerElementAt = musteriler.ElementAt(0);
+        /*
+            musterilerElementAt=
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding"
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @ElementAtOrDefault
+            Liste içerisinde verilen indexdeki elemanı döndürür yoksa default değerini döndürür;
+        */
+        var musterilerElementAtOrDefault= musteriler.ElementAtOrDefault(5);
+        /*
+            Eğer ElementAt ile 5. indexe ulaşılmak isteseydi excetion fırlatırdı;
+            musterilerElementAtOrDefault=null
+        */
+/************************************************************************************************************************************************************/
+        musteriler.EnsureCapacity(1);
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+            @ToDictionary
+            Listeyi sözlük olarak döndürür;
+        */
+        var musterilerToDictionary = musteriler.ToDictionary(x=>x.LNGKOD,y=>y.TXTAD);
+        /*
+            [0][KeyValuePair]:{[1,Sabancı Holding]]
+            [1][KeyValuePair]:{[2,Koç Holding]]
+        */ 
+/************************************************************************************************************************************************************/
+        
     }
+
 
 }
