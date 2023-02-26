@@ -28,39 +28,31 @@
             @Aggregate
             Verilen varsayılan deger ile tum degerleri donerek tek bir sonuc dondurur;
         */
-        var musteriBirlestir = musteriler.Aggregate("", (sonDeger, eleman) => sonDeger + " " + eleman.TXTAD);
+        string musteriBirlestir = musteriler.Aggregate("", (sonDeger, eleman) => sonDeger + " " + eleman.TXTAD);
         /*
-            @return(
-                string => Sabancı Holding Koç Holding
-            )
+            musteriBirlestir = "Sabancı Holding Koç Holding";
         */
-        var carpim = musteriler.Aggregate(1, (sonDeger, eleman) => sonDeger * eleman.LNGKOD);
+        int carpim = musteriler.Aggregate(1, (sonDeger, eleman) => sonDeger * eleman.LNGKOD);
         /*
-            @return(
-                int => 2
-            )
+           carpim = 2;
         */
 /************************************************************************************************************************************************************/
         /*  
             @All
             Butun kayitlar verilen kosula uyuyorsa true doner;
         */
-        var butunKayitlariKontrolEt = musteriler.All(x => x.TXTAD.EndsWith("g"));
+        bool butunKayitlariKontrolEt = musteriler.All(x => x.TXTAD.EndsWith("g"));
         /*
-            @return(
-                boolean = True
-            )
+            butunKayitlariKontrolEt = True;
         */
 /************************************************************************************************************************************************************/
         /*
             @Any
             Herhangi bir kayit verilen kosulu saglarsa true doner;
         */
-        var tekBirKayitUyuyorMu = musteriler.Any(x => x.TXTAD.StartsWith("S")); //
+        bool tekBirKayitUyuyorMu = musteriler.Any(x => x.TXTAD.StartsWith("S")); //
         /*
-            @return(
-                boolean = True
-            )
+            tekBirKayitUyuyorMu = True;
         */
 /************************************************************************************************************************************************************/
         /*
@@ -69,21 +61,19 @@
         */
         musteriler = musteriler.Append(new TBLMUSTERI { LNGKOD = 3, TXTAD = "Tekfen Holding" }).ToList();
         /*
-            @return(
-                musteriler = 
-                [0]:{
-                    LNGKOD [int]:1
-                    TXTAD [string]:"Sabancı Holding
-                }
-                [1]:{ 
-                    LNGKOD [int]:2
-                    TXTAD [string]:"Koç Holding"
-                }
-                [2]:{
-                    LNGKOD [int]:3
-                    TXTAD [string]:"Tekfen Holding"
-                }
-            )
+            musteriler = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+            [2]:{
+                LNGKOD [int]:3
+                TXTAD [string]:"Tekfen Holding"
+            }
         */
 /************************************************************************************************************************************************************/
         /*
@@ -96,45 +86,39 @@
             @Average
             Degerlerin ortalamasini alir;
         */
-        var average = musteriler.Average(x => x.LNGKOD);
+        double average = musteriler.Average(x => x.LNGKOD);
         /*
-            @return(
-                int => 2
-            )
+            average = 2;
         */
 /************************************************************************************************************************************************************/
         /*
             @Capacity
             Kac adet eleman kapasitesi oldugunu verir;
         */
-        var capacity = musteriler.Capacity;
+        int capacity = musteriler.Capacity;
         /*
-           @return(
-               int => 3
-           )
-       */
+            capacity = 3;
+        */
 /************************************************************************************************************************************************************/
         /*
             @Cast
             Listeyi icerisine verilen tipe donusturur;
         */
-        var castMusteri = musteriler.Cast<TBLMUSTERI>().ToList(); // convert eder
+        var castMusteri = musteriler.Cast<TBLMUSTERI>().ToList();
         /*
-            @return(
-                castMusteri = 
-                [0]:{
-                    LNGKOD [int]:1
-                    TXTAD [string]:"Sabancı Holding
-                }
-                [1]:{ 
-                    LNGKOD [int]:2
-                    TXTAD [string]:"Koç Holding"
-                }
-                [2]:{
-                    LNGKOD [int]:3
-                    TXTAD [string]:"Tekfen Holding"
-                }
-            )
+            castMusteri = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+            [2]:{
+                LNGKOD [int]:3
+                TXTAD [string]:"Tekfen Holding"
+            }
         */
 /************************************************************************************************************************************************************/
         /*
@@ -143,33 +127,8 @@
         */
         var parcala = musteriler.Chunk(2);
         /*
-            @return(
-                parcala = 
-                [0] [TBLMUSTERI[]]:
-                    [0]:{
-                        LNGKOD [int]:1
-                        TXTAD [string]:"Sabancı Holding
-                    }
-                    [1]:{ 
-                        LNGKOD [int]:2
-                        TXTAD [string]:"Koç Holding"
-                    }
-                [1] [TBLMUSTERI[]]:
-                    [0]:{
-                        LNGKOD [int]:3
-                        TXTAD [string]:"Tekfen Holding"
-                    }
-            )
-        */
-/************************************************************************************************************************************************************/
-        /*
-            @AddRange
-            Listeyi liste içerisine ekler;
-        */
-        musteriler.AddRange(new List<TBLMUSTERI>{new TBLMUSTERI{LNGKOD=4,TXTAD="Alarko Holding" }});
-        /*
-            @return(
-                castMusteri = 
+            parcala = 
+            [0] [TBLMUSTERI[]]:
                 [0]:{
                     LNGKOD [int]:1
                     TXTAD [string]:"Sabancı Holding
@@ -178,15 +137,36 @@
                     LNGKOD [int]:2
                     TXTAD [string]:"Koç Holding"
                 }
-                [2]:{
+            [1] [TBLMUSTERI[]]:
+                [0]:{
                     LNGKOD [int]:3
                     TXTAD [string]:"Tekfen Holding"
                 }
-                [3]:{
-                    LNGKOD [int]:4
-                    TXTAD [string]:"Alarko Holding"
-                }
-            )
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @AddRange
+            Listeyi liste içerisine ekler;
+        */
+        musteriler.AddRange(new List<TBLMUSTERI>{new TBLMUSTERI{LNGKOD=4,TXTAD="Alarko Holding" }});
+        /*
+            musteriler = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+            [2]:{
+                LNGKOD [int]:3
+                TXTAD [string]:"Tekfen Holding"
+            }
+            [3]:{
+                LNGKOD [int]:4
+                TXTAD [string]:"Alarko Holding"
+            }
         */
 /************************************************************************************************************************************************************/
         /*
@@ -204,29 +184,25 @@
         var musterilerConcat = new List<TBLMUSTERI>{new TBLMUSTERI { LNGKOD = 2, TXTAD = "Koç Holding" }};
         musteriler = musteriler.Concat(musterilerConcat).ToList();
         /*
-            @return(
-                musteriler = 
-                [0]:{
-                    LNGKOD [int]:1
-                    TXTAD [string]:"Sabancı Holding
-                }
-                [1]:{ 
-                    LNGKOD [int]:2
-                    TXTAD [string]:"Koç Holding"
-                }
-            )
+            musteriler = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
         */
 /************************************************************************************************************************************************************/
         /*
             @Contains
             Listenin icerisinde verilen tek eleman var mı?;
         */
-        bool musteriContains =  musteriler.Contains(sahol);
+        bool musteriIceriyorMu =  musteriler.Contains(sahol);
          /*
             Degiskenden cekilmeden arandıgında false donmekte cunku ramde farklı alanda;
-            @return(
-                bool => true
-            )
+            musteriIceriyorMu = true
         */
 /************************************************************************************************************************************************************/
         /*
@@ -243,15 +219,15 @@
 /************************************************************************************************************************************************************/
         /*
             @CopyTo
-            Listeyi arraye kopyalar;
+            Listeyi diziye kopyalar;
         */
-        TBLMUSTERI[] musteriCopyTo = new TBLMUSTERI[musteriler.Count];
-        musteriler.CopyTo(musteriCopyTo);
+        TBLMUSTERI[] musteriDizisi = new TBLMUSTERI[musteriler.Count];
+        musteriler.CopyTo(musteriDizisi);
         /*
-            musteriCopyTo[] = 
+            musteriDizisi[] = 
             [0]:{
                 LNGKOD [int]:1
-                TXTAD [string]:"Sabancı Holding
+                TXTAD [string]:"Sabancı Holding"
             }
             [1]:{ 
                 LNGKOD [int]:2
@@ -264,38 +240,57 @@
             @Count
             Liste eleman sayısını verir;
         */
-        int musteriCount = musteriler.Count;
+        int musteriAdet = musteriler.Count;
          /*
-            musteriCount = 2
+            musteriAdet = 2
         */
 /************************************************************************************************************************************************************/
         /*
             @DefaultIfEmpty
-            Liste eleman bulunmuyorsa varsayılan elemanı ekler;
+            Liste eleman bulunmuyorsa verilen varsayılan elemanı döndürür;
         */
-        var musterilerIfEmpty = musteriler.DefaultIfEmpty(new TBLMUSTERI { LNGKOD = 3, TXTAD = "Sabancı Holding" });
+        var musterilerEgerBossa = musteriler.DefaultIfEmpty(new TBLMUSTERI { LNGKOD = 3, TXTAD = "Sabancı Holding" }).ToList();
+        /*
+            musterilerEgerBossa = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding"
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+        */
 /************************************************************************************************************************************************************/
         /*
             @Distinct
             Liste elemanları benzersiz olarak döndürür;
         */
         musteriler.Add(new TBLMUSTERI {LNGKOD=3,TXTAD="Sabancı Holding"});
-        var musterilerDistinct = musteriler.Select(x=>x.TXTAD).Distinct();
-       
+        var musterilerBenzersiz = musteriler.Distinct();
        /*
-            musterilerDistinct = [
-                [0] [string]:"Sabancı Holding"
-                [1] [string]:"Koç Holding"
-            ]
+            musterilerBenzersiz = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding"
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+            [2]:{ 
+                LNGKOD [int]:3
+                TXTAD [string]:"Sabancı Holding"
+            }
        */
 /************************************************************************************************************************************************************/
         /*
             @DistinctBy
             Liste elemanları verilen anahtara göre benzersiz olarak döndürür;
         */
-        var musterilerDistinctBy = musteriler.DistinctBy(x=>x.TXTAD);
+        var musterilerBenzersizBy = musteriler.DistinctBy(x=>x.TXTAD);
         /*
-            musterilerDistinctBy = 
+            musterilerBenzersizBy = 
             [0]:{
                 LNGKOD [int]:1
                 TXTAD [string]:"Sabancı Holding
@@ -311,9 +306,9 @@
             @ElementAt
             Liste içerisinde verilen indexdeki elemanı döndürür;
         */
-        var musterilerElementAt = musteriler.ElementAt(0);
+        var musterilerNthEleman = musteriler.ElementAt(0);
         /*
-            musterilerElementAt=
+            musterilerNthEleman=
                 LNGKOD [int]:1
                 TXTAD [string]:"Sabancı Holding"
         */
@@ -322,17 +317,74 @@
             @ElementAtOrDefault
             Liste içerisinde verilen indexdeki elemanı döndürür yoksa default değerini döndürür;
         */
-        var musterilerElementAtOrDefault= musteriler.ElementAtOrDefault(5);
+        var musterilerNthElementOrDefault= musteriler.ElementAtOrDefault(5);
         /*
             Eğer ElementAt ile 5. indexe ulaşılmak isteseydi excetion fırlatırdı;
-            musterilerElementAtOrDefault=null
+            musterilerNthElementOrDefault=null
         */
 /************************************************************************************************************************************************************/
-        musteriler.EnsureCapacity(1);
-
-
-
-
+        musteriler.EnsureCapacity(1); //?
+/************************************************************************************************************************************************************/
+        /*
+            @Equals
+            Liste içerisinde verilen listenin eşit olmadığını döndürür;
+        */
+        var musterilerEsitMi = musteriler;
+        bool musterilerEsit = musteriler.Equals(musterilerEsitMi);
+        /*
+            musterilerEsit = true
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @Except
+            Liste içerisinde verilen liste karşılaştırılarak eşleşmeyenleri döndürür;
+        */
+        List<TBLMUSTERI> musterilerHaricListe = new List<TBLMUSTERI>();
+        musterilerHaricListe = musteriler.Concat(musterilerHaricListe).ToList();
+        musterilerHaricListe.Add(new TBLMUSTERI{LNGKOD=3,TXTAD="Koç Holding" });
+        var musterilerHaric = musterilerHaricListe.Except(musteriler).ToList();
+        /*
+            musterilerHaric =
+            [0]:{
+                LNGKOD [int]:3
+                TXTAD [string]:"Koç Holding"
+            }
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @ExceptBy
+            Liste içerisinde verilen liste anahtar değerini karşılaştırılarak eşleşmeyenleri döndürür;
+        */
+        var musterilerHaricBy = musterilerHaricListe.ExceptBy(musteriler.Select(x=>x.LNGKOD),x=>x.LNGKOD).ToList();
+        /*
+            musterilerHaricBy =
+            [0]:{
+                LNGKOD [int]:3
+                TXTAD [string]:"Koç Holding"
+            }
+        */
+/************************************************************************************************************************************************************/        
+        /*
+            @Exists
+            Listeye verilen koşula uyan bir kayıt var ise doğru(true) döndürür ;
+        */
+        bool musterilerVarMi = musteriler.Exists(x=>x.LNGKOD==12);
+        /*
+            musterilerVarMi = false
+        */
+/************************************************************************************************************************************************************/  
+         /*
+            @Exists
+            Listeye verilen koşula uyan bir kayıt var ise döndürür;
+        */
+        var musterilerBul = musteriler.Find(x=>x.LNGKOD==2);
+        /*
+            musterilerBul =
+            [0]:{
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+        */
 
 
 
