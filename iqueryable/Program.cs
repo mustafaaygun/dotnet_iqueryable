@@ -363,8 +363,8 @@
                 TXTAD [string]:"Koç Holding"
             }
         */
-/************************************************************************************************************************************************************/        
-        /*
+/************************************************************************************************************************************************************/
+  /*
             @Exists
             Listeye verilen koşula uyan bir kayıt var ise doğru(true) döndürür ;
         */
@@ -372,10 +372,10 @@
         /*
             musterilerVarMi = false
         */
-/************************************************************************************************************************************************************/  
-         /*
-            @Exists
-            Listeye verilen koşula uyan bir kayıt var ise döndürür;
+/************************************************************************************************************************************************************/
+        /*
+            @Find
+            Listeye verilen koşula uyan bir kayıt var ise ilk kaydı döndürür;
         */
         var musterilerBul = musteriler.Find(x=>x.LNGKOD==2);
         /*
@@ -385,10 +385,93 @@
                 TXTAD [string]:"Koç Holding"
             }
         */
-
-
-
-
+/************************************************************************************************************************************************************/
+        /*
+            @FindAll
+            Listeye verilen koşula uyan bir kayıtların tamamını döndürür;
+        */
+        var musterilerHepsiniBul = musteriler.FindAll(x=>x.LNGKOD==2);
+        /*
+            musterilerHepsiniBul =
+            [0]:{
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @FindIndex
+            Listeye verilen koşula uyan ilk kaydın sırasını döndürür;
+        */
+        var musteriSirasiBul = musteriler.FindIndex(x=>x.LNGKOD==2);
+        /*
+            musteriSirasiBul = 1
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @FindLast
+            Listeye verilen koşula uyan kaydın sırasını döndürür;
+        */
+        var musteriSondakiniBul = musteriler.FindLast(x=>x.LNGKOD==1);
+        /*
+            musteriSondakiniBul.LNGKOD = 1
+            musteriSondakiniBul.TXTAD = "Sabancı Holding"
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @FindLastIndex
+            Listeye verilen koşula uyan son kaydın sırasını döndürür;
+        */
+        var musteriSonSirasiBul = musteriler.FindLastIndex(x=>x.LNGKOD==1);
+        /*
+            musteriSonSirasiBu = 1
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @GetEnumerator
+            Listeye foreach benzeri döndürür;
+        */
+        var musterilerGetEnumerator = musteriler.GetEnumerator();
+        while (musterilerGetEnumerator.MoveNext()) {
+            string val = musterilerGetEnumerator.Current.TXTAD;
+        }
+        /*
+            val = "Sabancı Holding"
+            val = "Koç Holding"
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @GetHashCode
+            Listenin hash kodunu verir;
+        */
+        var musteriHashKodu = musteriler.GetHashCode();
+        /*
+            musteriHashKodu = 3574638
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @GetRange
+            Listenin istenilen aralığındaki kayıtları getirir;
+        */
+        var musterilerAralikGetir = musteriler.GetRange(0,2);
+        /*
+            musterilerAralikGetir = 
+            [0]:{
+                LNGKOD [int]:1
+                TXTAD [string]:"Sabancı Holding
+            }
+            [1]:{ 
+                LNGKOD [int]:2
+                TXTAD [string]:"Koç Holding"
+            }
+        */
+/************************************************************************************************************************************************************/
+        /*
+            @GetType
+            Listenin tipi ile ilgili bilgileri getirir;
+        */
+        var musteriTipGetir = musteriler.GetType();
+/************************************************************************************************************************************************************/      
 
 
 
@@ -402,9 +485,6 @@
             [0][KeyValuePair]:{[1,Sabancı Holding]]
             [1][KeyValuePair]:{[2,Koç Holding]]
         */ 
-/************************************************************************************************************************************************************/
-        
+/************************************************************************************************************************************************************/ 
     }
-
-
 }
